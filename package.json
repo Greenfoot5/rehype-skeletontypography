@@ -1,6 +1,6 @@
 {
   "name": "rehype-skeletontypography",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "rehype plugin to add `h#` class to headings",
   "license": "MIT",
   "keywords": [
