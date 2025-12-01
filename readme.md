@@ -1,4 +1,4 @@
-# rehype-headingclasses
+# rehype-skeletontypography
 
 [![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
@@ -6,9 +6,8 @@
 [![Size][size-badge]][size]
 [![Sponsors][sponsors-badge]][collective]
 [![Backers][backers-badge]][collective]
-[![Chat][chat-badge]][chat]
 
-**[rehype][]** plugin to add `h#` classes to headings.
+**[rehype][]** plugin to add skeleton.dev typography classes.
 
 ## Contents
 
@@ -17,22 +16,17 @@
 *   [Install](#install)
 *   [Use](#use)
 *   [API](#api)
-    *   [`unified().use(rehypeSlug[, options])`](#unifieduserehypeslug-options)
+    *   [`unified().use(rehypeSkeleton[, options])`](#unifieduserehypeskeletontypography-options)
     *   [`Options`](#options)
 *   [Types](#types)
 *   [Compatibility](#compatibility)
 *   [Security](#security)
-*   [Related](#related)
-*   [Contribute](#contribute)
 *   [License](#license)
 
 ## What is this?
 
-This package is a [unified][] ([rehype][]) plugin to add `h#` classes to
-headings.
-It looks for headings (so `<h1>` through `<h6>`)
-that do not yet have classes and adds `h#` classes to them.
-i.e. `<h1>` gets `<h1 class="h1">`.
+This package is a [unified][] ([rehype][]) plugin to add skeleton.dev typography classes.
+It looks for tags that have a skeleton.dev typography class and adds it.
 The algorithm that does this is [`github-slugger`][github-slugger], which
 matches how GitHub works.
 
@@ -40,11 +34,12 @@ matches how GitHub works.
 (ASTs).
 **rehype** adds support for HTML to unified.
 **hast** is the HTML AST that rehype uses.
-This is a rehype plugin that adds `h#` classes to headings in the AST.
+This is a rehype plugin to add skeleton.dev typography classes.
 
 ## When should I use this?
 
-This plugin is useful when you’re using something like <https://www.skeleton.dev/docs/svelte/design/typography>
+If you are using [skeleton.dev's typography](https://www.skeleton.dev/docs/svelte/design/typography)
+and want it automatically included
 
 ## Install
 
@@ -52,20 +47,20 @@ This package is [ESM only][esm].
 In Node.js (version 16+), install with [npm][]:
 
 ```sh
-npm install rehype-slug
+pnpm install rehype-skeletontypography
 ```
 
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import rehypeSlug from 'https://esm.sh/rehype-slug@6'
+import rehypeSkeleton from 'https://esm.sh/rehype-skeletontypography@1'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import rehypeSlug from 'https://esm.sh/rehype-slug@6?bundle'
+  import rehypeSkeleton from 'https://esm.sh/rehype-skeletontypography@1?bundle'
 </script>
 ```
 
@@ -74,10 +69,10 @@ In browsers with [`esm.sh`][esmsh]:
 Say we have the following file `example.html`:
 
 ```html
-<h1 id=some-id>Lorem ipsum</h1>
+<h1 class="some-class">Lorem ipsum</h1>
 <h2>Dolor sit amet 😪</h2>
 <h3>consectetur &amp; adipisicing</h3>
-<h4>elit</h4>
+<pre>elit</pre>
 <h5>elit</h5>
 ```
 
@@ -86,11 +81,11 @@ Say we have the following file `example.html`:
 ```js
 import {read} from 'to-vfile'
 import {rehype} from 'rehype'
-import rehypeSlug from 'rehype-slug'
+import rehypeSkeleton from 'rehype-skeletontypography'
 
 const file = await rehype()
   .data('settings', {fragment: true})
-  .use(rehypeSlug)
+  .use(rehypeSkeleton)
   .process(await read('example.html'))
 
 console.log(String(file))
@@ -99,21 +94,21 @@ console.log(String(file))
 …then running `node example.js` yields:
 
 ```html
-<h1 id="some-id">Lorem ipsum</h1>
-<h2 id="dolor-sit-amet-">Dolor sit amet 😪</h2>
-<h3 id="consectetur--adipisicing">consectetur &#x26; adipisicing</h3>
-<h4 id="elit">elit</h4>
-<h5 id="elit-1">elit</h5>
+<h1 class="some-class h1">Lorem ipsum</h1>
+<h2 class="h2">Dolor sit amet 😪</h2>
+<h3 class="h3">consectetur &#x26; adipisicing</h3>
+<pre class="pre">elit</pre>
+<h5 class="h5">elit</h5>
 ```
 
 ## API
 
 This package exports no identifiers.
-The default export is [`rehypeSlug`][api-rehype-slug].
+The default export is [`rehypeSkeleton`][api-rehype-skeletontypography].
 
 ### `unified().use(rehypeSlug[, options])`
 
-Add `id`s to headings.
+Add classes to tags.
 
 ###### Parameters
 
@@ -131,7 +126,7 @@ Configuration (TypeScript type).
 ###### Fields
 
 *   `prefix` (`string`, default: `''`)
-    — prefix to add in front of `id`s
+    — prefix to add in front of class names
 
 ## Types
 
@@ -145,57 +140,42 @@ versions of Node.js.
 
 When we cut a new major release, we drop support for unmaintained versions of
 Node.
-This means we try to keep the current release line, `rehype-slug@^6`,
-compatible with Node.js 16.
+This means we try to keep the current release line, `rehype-skeletontypography@^1`,
+compatible with Node.js 20.
 
 This plugin works with `rehype-parse` version 1+, `rehype-stringify` version 1+,
 `rehype` version 1+, and `unified` version 4+.
 
 ## Security
 
-Use of `rehype-slug` can open you up to a [cross-site scripting (XSS)][xss]
-attack as it sets `id` attributes on headings, which causes what is known
+Use of `rehype-skeletontypography` can open you up to a [cross-site scripting (XSS)][xss]
+attack as it sets class attributes on headings, which causes what is known
 as “DOM clobbering”.
 Please use [`rehype-sanitize`][rehype-sanitize] and see its
 [Example: headings (DOM clobbering)][rehype-sanitize-example] for information on
 how to properly solve it.
 
-## Related
-
-*   [`rehype-autolink-headings`][rehype-autolink-headings]
-    — add links to headings with IDs back to themselves
-
-## Contribute
-
-See [`contributing.md`][contributing] in [`rehypejs/.github`][health] for ways
-to get started.
-See [`support.md`][support] for ways to get help.
-
-This project has a [code of conduct][coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
-
 ## License
 
-[MIT][license] © [Titus Wormer][author]
+[MIT][license] © [Greenfoot5][author]
 
 <!-- Definitions -->
 
-[build-badge]: https://github.com/rehypejs/rehype-slug/workflows/main/badge.svg
+[build-badge]: https://github.com/greenfoot5/rehype-skeletontypography/workflows/main/badge.svg
 
-[build]: https://github.com/rehypejs/rehype-slug/actions
+[build]: https://github.com/greenfoot5/rehype-seketontypography/actions
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/rehypejs/rehype-slug.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/greenfoot5/rehype-skeletontypography
 
-[coverage]: https://codecov.io/github/rehypejs/rehype-slug
+[coverage]: https://codecov.io/github/greenfoot5/rehype-skeletontypography
 
-[downloads-badge]: https://img.shields.io/npm/dm/rehype-slug.svg
+[downloads-badge]: https://img.shields.io/npm/dm/rehype-skeletontypograhy.svg
 
-[downloads]: https://www.npmjs.com/package/rehype-slug
+[downloads]: https://www.npmjs.com/package/rehype-skeletontypography
 
-[size-badge]: https://img.shields.io/bundlejs/size/rehype-slug
+[size-badge]: https://img.shields.io/bundlejs/size/rehype-skeletontypography
 
-[size]: https://bundlejs.com/?q=rehype-slug
+[size]: https://bundlejs.com/?q=rehype-skeletontypography
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -205,25 +185,15 @@ abide by its terms.
 
 [chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
 
-[chat]: https://github.com/rehypejs/rehype/discussions
-
 [npm]: https://docs.npmjs.com/cli/install
 
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
 [esmsh]: https://esm.sh
 
-[health]: https://github.com/rehypejs/.github
-
-[contributing]: https://github.com/rehypejs/.github/blob/main/contributing.md
-
-[support]: https://github.com/rehypejs/.github/blob/main/support.md
-
-[coc]: https://github.com/rehypejs/.github/blob/main/code-of-conduct.md
-
 [license]: license
 
-[author]: https://wooorm.com
+[author]: https://harvey.alchemix.dev
 
 [github-slugger]: https://github.com/Flet/github-slugger
 
@@ -245,4 +215,4 @@ abide by its terms.
 
 [api-options]: #options
 
-[api-rehype-slug]: #unifieduserehypeslug-options
+[api-rehype-skeletontypography]: #unifieduserehypeskeletontypography-options

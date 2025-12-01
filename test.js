@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {rehype} from 'rehype'
-import rehypeClasses from 'rehype-headingclasses'
+import rehypeSkeleton from 'rehype-skeletonclasses'
 
-test('rehypeClasses', async function (t) {
+test('rehypeSkeleton', async function (t) {
   await t.test('should expose the public api', async function () {
     assert.deepEqual(
-      Object.keys(await import('rehype-headingclasses')).sort(),
+      Object.keys(await import('rehype-skeletonclasses')).sort(),
       ['default']
     )
   })
@@ -14,7 +14,7 @@ test('rehypeClasses', async function (t) {
   await t.test('should work', async function () {
     const file = await rehype()
       .data('settings', {fragment: true})
-      .use(rehypeClasses)
+      .use(rehypeSkeleton)
       .process(
         [
           '<section>',
@@ -62,7 +62,7 @@ test('rehypeClasses', async function (t) {
   await t.test('should support `options.prefix`', async function () {
     const file = await rehype()
       .data('settings', {fragment: true})
-      .use(rehypeClasses, {prefix: 'test-'})
+      .use(rehypeSkeleton, {prefix: 'test-'})
       .process(
         [
           '<section>',
