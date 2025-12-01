@@ -1,6 +1,6 @@
 {
-  "name": "rehype-headingclasses",
-  "version": "6.0.0",
+  "name": "rehype-skeletontypography",
+  "version": "1.0.0",
   "description": "rehype plugin to add `h#` class to headings",
   "license": "MIT",
   "keywords": [
@@ -13,8 +13,8 @@
     "slug",
     "unified"
   ],
-  "repository": "Greenfoot5/rehype-headingclasses",
-  "bugs": "https://github.com/Greenfoot5/rehype-headingclasses/issues",
+  "repository": "Greenfoot5/rehype-skeletontypography",
+  "bugs": "https://github.com/Greenfoot5/rehype-skeletontypography/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
