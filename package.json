@@ -1,27 +1,24 @@
 {
-  "name": "rehype-slug",
+  "name": "rehype-headingclasses",
   "version": "6.0.0",
-  "description": "rehype plugin to add `id` attributes to headings",
+  "description": "rehype plugin to add `h#` class to headings",
   "license": "MIT",
   "keywords": [
     "heading",
     "html",
-    "id",
+    "class",
     "plugin",
     "rehype",
     "rehype-plugin",
     "slug",
     "unified"
   ],
-  "repository": "rehypejs/rehype-slug",
-  "bugs": "https://github.com/rehypejs/rehype-slug/issues",
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/unified"
-  },
+  "repository": "Greenfoot5/rehype-headingclasses",
+  "bugs": "https://github.com/Greenfoot5/rehype-headingclasses/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
   "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+    "Greenfoot5 <greenfoot5@alchemix.dev> (https://harvey.alchemix.dev)"
   ],
   "sideEffects": false,
   "type": "module",
@@ -35,7 +32,6 @@
     "@types/hast": "^3.0.0",
     "github-slugger": "^2.0.0",
     "hast-util-heading-rank": "^3.0.0",
-    "hast-util-to-string": "^3.0.0",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
