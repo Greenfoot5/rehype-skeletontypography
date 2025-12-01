@@ -15,10 +15,10 @@
   ],
   "repository": "Greenfoot5/rehype-skeletontypography",
   "bugs": "https://github.com/Greenfoot5/rehype-skeletontypography/issues",
-  "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+  "author": "Greenfoot5 <harvey@alchemix.dev> (https://harvey.alchemix.dev)",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
-    "Greenfoot5 <greenfoot5@alchemix.dev> (https://harvey.alchemix.dev)"
+    "Greenfoot5 <harvey@alchemix.dev> (https://harvey.alchemix.dev)"
   ],
   "sideEffects": false,
   "type": "module",
