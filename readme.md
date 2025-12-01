@@ -1,4 +1,4 @@
-# rehype-slug
+# rehype-headingclasses
 
 [![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
@@ -8,7 +8,7 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**[rehype][]** plugin to add `id`s to headings.
+**[rehype][]** plugin to add `h#` classes to headings.
 
 ## Contents
 
@@ -28,9 +28,11 @@
 
 ## What is this?
 
-This package is a [unified][] ([rehype][]) plugin to add `id`s to headings.
-It looks for headings (so `<h1>` through `<h6>`) that do not yet have `id`s
-and adds `id` attributes to them based on the text they contain.
+This package is a [unified][] ([rehype][]) plugin to add `h#` classes to
+headings.
+It looks for headings (so `<h1>` through `<h6>`)
+that do not yet have classes and adds `h#` classes to them.
+i.e. `<h1>` gets `<h1 class="h1">`.
 The algorithm that does this is [`github-slugger`][github-slugger], which
 matches how GitHub works.
 
@@ -38,16 +40,11 @@ matches how GitHub works.
 (ASTs).
 **rehype** adds support for HTML to unified.
 **hast** is the HTML AST that rehype uses.
-This is a rehype plugin that adds `id`s to headings in the AST.
+This is a rehype plugin that adds `h#` classes to headings in the AST.
 
 ## When should I use this?
 
-This plugin is useful when you have relatively long documents and you want to be
-able to link to particular sections.
-
-A different plugin, [`rehype-autolink-headings`][rehype-autolink-headings], adds
-links to these headings back to themselves, which is useful as it lets users
-more easily link to particular sections.
+This plugin is useful when you’re using something like <https://www.skeleton.dev/docs/svelte/design/typography>
 
 ## Install
 
