@@ -24,6 +24,14 @@ test('rehypeClasses', async function (t) {
           '  <h4>elit</h4>',
           '  <h5>elit</h5>',
           '  <p>sed</p>',
+          '  <blockquote>quote this</blockquote>',
+          '  <a href="/">link me</a>',
+          '  <pre>clode</pre>',
+          '  <code>code</code>',
+          '  <kbd class="kb">⌘</kbd>',
+          '  <del><s>Always</s> Gonna Give You Up</del>' +
+            '  <ins class="ins" cite="https://youtu.be/dQw4w9WgXcQ" datetime="10-31-2022"> Never Gonna Give You Up </ins>',
+          '  <mark>Mark my words!</mark>',
           '</section>'
         ].join('\n')
       )
@@ -38,6 +46,14 @@ test('rehypeClasses', async function (t) {
         '  <h4 class="h4">elit</h4>',
         '  <h5 class="h5">elit</h5>',
         '  <p>sed</p>',
+        '  <blockquote class="blockquote">quote this</blockquote>',
+        '  <a href="/" class="anchor">link me</a>',
+        '  <pre class="pre">clode</pre>',
+        '  <code class="code">code</code>',
+        '  <kbd class="kb kbd">⌘</kbd>',
+        '  <del class="del"><s>Always</s> Gonna Give You Up</del>' +
+          '  <ins class="ins" cite="https://youtu.be/dQw4w9WgXcQ" datetime="10-31-2022"> Never Gonna Give You Up </ins>',
+        '  <mark class="mark">Mark my words!</mark>',
         '</section>'
       ].join('\n')
     )
@@ -56,6 +72,14 @@ test('rehypeClasses', async function (t) {
           '  <h4>elit</h4>',
           '  <h5>elit</h5>',
           '  <p>sed</p>',
+          '  <blockquote>quote this</blockquote>',
+          '  <a href="/" class="a">link me</a>',
+          '  <pre>clode</pre>',
+          '  <code>code</code>',
+          '  <kbd class="kb">⌘</kbd>',
+          '  <del><s>Always</s> Gonna Give You Up</del>' +
+            '  <ins class="ins" cite="https://youtu.be/dQw4w9WgXcQ" datetime="10-31-2022"> Never Gonna Give You Up </ins>',
+          '  <mark>Mark my words!</mark>',
           '</section>'
         ].join('\n')
       )
@@ -70,6 +94,14 @@ test('rehypeClasses', async function (t) {
         '  <h4 class="test-h4">elit</h4>',
         '  <h5 class="test-h5">elit</h5>',
         '  <p>sed</p>',
+        '  <blockquote class="test-blockquote">quote this</blockquote>',
+        '  <a href="/" class="a test-anchor">link me</a>',
+        '  <pre class="test-pre">clode</pre>',
+        '  <code class="test-code">code</code>',
+        '  <kbd class="kb test-kbd">⌘</kbd>',
+        '  <del class="test-del"><s>Always</s> Gonna Give You Up</del>' +
+          '  <ins class="ins test-ins" cite="https://youtu.be/dQw4w9WgXcQ" datetime="10-31-2022"> Never Gonna Give You Up </ins>',
+        '  <mark class="test-mark">Mark my words!</mark>',
         '</section>'
       ].join('\n')
     )
